@@ -10,6 +10,7 @@ use App\Http\Resources\ReservationResource;
 use App\Models\Offer;
 use App\Services\ReservationService;
 use Illuminate\Http\JsonResponse;
+use Throwable;
 
 class ReservationController extends Controller
 {
@@ -17,6 +18,9 @@ class ReservationController extends Controller
         private readonly ReservationService $reservationService
     ) {}
 
+    /**
+     * @throws Throwable
+     */
     public function store(StoreReservationRequest $request, Offer $offer): JsonResponse
     {
         $reservation = $this->reservationService->reserve($offer, $request->validated());

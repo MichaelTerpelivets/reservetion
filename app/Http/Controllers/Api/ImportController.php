@@ -11,6 +11,7 @@ use App\Http\Resources\OfferImportResource;
 use App\Models\OfferImport;
 use App\Services\ImportOffersService;
 use Illuminate\Http\JsonResponse;
+use Throwable;
 
 class ImportController extends Controller
 {
@@ -18,6 +19,9 @@ class ImportController extends Controller
         private readonly ImportOffersService $importOffersService
     ) {}
 
+    /**
+     * @throws Throwable
+     */
     public function store(StoreImportRequest $request): JsonResponse
     {
         $import = $this->importOffersService->create($request->validated());

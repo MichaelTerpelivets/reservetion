@@ -21,6 +21,9 @@ class ProcessOfferImportJob implements ShouldQueue
 
     public function __construct(public int $importId) {}
 
+    /**
+     * @throws Throwable
+     */
     public function handle(): void
     {
         $claimed = DB::transaction(function () {
